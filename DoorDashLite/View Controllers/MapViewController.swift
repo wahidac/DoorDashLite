@@ -66,7 +66,7 @@ extension MapViewController: MKMapViewDelegate {
             */
             
             // Update the text field
-            print(address)
+            //print(address)
         }
         print("DID CHANGE")
     }
