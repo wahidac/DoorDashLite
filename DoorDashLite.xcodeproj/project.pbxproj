@@ -7,17 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3E84C8BC216697DA00C79A46 /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E84C8BB216697DA00C79A46 /* Restaurant.swift */; };
 		3EEDCB352165524F00FA96C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EEDCB342165524F00FA96C8 /* AppDelegate.swift */; };
-		3EEDCB392165524F00FA96C8 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EEDCB382165524F00FA96C8 /* SecondViewController.swift */; };
+		3EEDCB392165524F00FA96C8 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EEDCB382165524F00FA96C8 /* FavoritesViewController.swift */; };
 		3EEDCB3C2165524F00FA96C8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EEDCB3A2165524F00FA96C8 /* Main.storyboard */; };
 		3EEDCB3E2165525200FA96C8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3EEDCB3D2165525200FA96C8 /* Assets.xcassets */; };
 		3EEDCB412165525200FA96C8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EEDCB3F2165525200FA96C8 /* LaunchScreen.storyboard */; };
 		3EEDCB4C2165525200FA96C8 /* DoorDashLiteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EEDCB4B2165525200FA96C8 /* DoorDashLiteTests.swift */; };
 		3EEDCB572165525200FA96C8 /* DoorDashLiteUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EEDCB562165525200FA96C8 /* DoorDashLiteUITests.swift */; };
 		3EEDCB68216553A000FA96C8 /* TabBarNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EEDCB67216553A000FA96C8 /* TabBarNavigationController.swift */; };
-		3EEDCB6C2165898A00FA96C8 /* ExploreContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EEDCB6B2165898A00FA96C8 /* ExploreContainerViewController.swift */; };
 		3EEDCB6F21658E0500FA96C8 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EEDCB6D21658E0500FA96C8 /* MapViewController.swift */; };
-		3EEDCB742165925C00FA96C8 /* ExploreTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EEDCB732165925C00FA96C8 /* ExploreTableViewController.swift */; };
+		3EEDCB742165925C00FA96C8 /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EEDCB732165925C00FA96C8 /* ExploreViewController.swift */; };
+		3EEDCB772165DD5B00FA96C8 /* MapViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EEDCB762165DD5B00FA96C8 /* MapViewControllerDelegate.swift */; };
+		3EEDCB792165DEF800FA96C8 /* DoorDashAPIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EEDCB782165DEF800FA96C8 /* DoorDashAPIController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,9 +40,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3E84C8BB216697DA00C79A46 /* Restaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
 		3EEDCB312165524F00FA96C8 /* DoorDashLite.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoorDashLite.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3EEDCB342165524F00FA96C8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		3EEDCB382165524F00FA96C8 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		3EEDCB382165524F00FA96C8 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		3EEDCB3B2165524F00FA96C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3EEDCB3D2165525200FA96C8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3EEDCB402165525200FA96C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -52,9 +55,10 @@
 		3EEDCB562165525200FA96C8 /* DoorDashLiteUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoorDashLiteUITests.swift; sourceTree = "<group>"; };
 		3EEDCB582165525200FA96C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3EEDCB67216553A000FA96C8 /* TabBarNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarNavigationController.swift; sourceTree = "<group>"; };
-		3EEDCB6B2165898A00FA96C8 /* ExploreContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreContainerViewController.swift; sourceTree = "<group>"; };
 		3EEDCB6D21658E0500FA96C8 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
-		3EEDCB732165925C00FA96C8 /* ExploreTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreTableViewController.swift; sourceTree = "<group>"; };
+		3EEDCB732165925C00FA96C8 /* ExploreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
+		3EEDCB762165DD5B00FA96C8 /* MapViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewControllerDelegate.swift; sourceTree = "<group>"; };
+		3EEDCB782165DEF800FA96C8 /* DoorDashAPIController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoorDashAPIController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +86,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3E84C8BA2166915200C79A46 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				3EEDCB782165DEF800FA96C8 /* DoorDashAPIController.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
 		3EEDCB282165524E00FA96C8 = {
 			isa = PBXGroup;
 			children = (
@@ -105,6 +117,9 @@
 		3EEDCB332165524F00FA96C8 /* DoorDashLite */ = {
 			isa = PBXGroup;
 			children = (
+				3E84C8BA2166915200C79A46 /* API */,
+				3EEDCB7A2165DF7200FA96C8 /* Models */,
+				3EEDCB752165DC4200FA96C8 /* Protocols */,
 				3EEDCB662165532C00FA96C8 /* View Controllers */,
 				3EEDCB342165524F00FA96C8 /* AppDelegate.swift */,
 				3EEDCB3A2165524F00FA96C8 /* Main.storyboard */,
@@ -137,12 +152,27 @@
 			isa = PBXGroup;
 			children = (
 				3EEDCB6D21658E0500FA96C8 /* MapViewController.swift */,
-				3EEDCB382165524F00FA96C8 /* SecondViewController.swift */,
+				3EEDCB382165524F00FA96C8 /* FavoritesViewController.swift */,
 				3EEDCB67216553A000FA96C8 /* TabBarNavigationController.swift */,
-				3EEDCB6B2165898A00FA96C8 /* ExploreContainerViewController.swift */,
-				3EEDCB732165925C00FA96C8 /* ExploreTableViewController.swift */,
+				3EEDCB732165925C00FA96C8 /* ExploreViewController.swift */,
 			);
 			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		3EEDCB752165DC4200FA96C8 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				3EEDCB762165DD5B00FA96C8 /* MapViewControllerDelegate.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		3EEDCB7A2165DF7200FA96C8 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				3E84C8BB216697DA00C79A46 /* Restaurant.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -276,10 +306,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3EEDCB742165925C00FA96C8 /* ExploreTableViewController.swift in Sources */,
-				3EEDCB392165524F00FA96C8 /* SecondViewController.swift in Sources */,
+				3EEDCB742165925C00FA96C8 /* ExploreViewController.swift in Sources */,
+				3EEDCB392165524F00FA96C8 /* FavoritesViewController.swift in Sources */,
+				3EEDCB792165DEF800FA96C8 /* DoorDashAPIController.swift in Sources */,
+				3EEDCB772165DD5B00FA96C8 /* MapViewControllerDelegate.swift in Sources */,
+				3E84C8BC216697DA00C79A46 /* Restaurant.swift in Sources */,
 				3EEDCB352165524F00FA96C8 /* AppDelegate.swift in Sources */,
-				3EEDCB6C2165898A00FA96C8 /* ExploreContainerViewController.swift in Sources */,
 				3EEDCB6F21658E0500FA96C8 /* MapViewController.swift in Sources */,
 				3EEDCB68216553A000FA96C8 /* TabBarNavigationController.swift in Sources */,
 			);
@@ -459,6 +491,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 576R26N285;
 				INFOPLIST_FILE = DoorDashLite/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -477,6 +510,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 576R26N285;
 				INFOPLIST_FILE = DoorDashLite/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

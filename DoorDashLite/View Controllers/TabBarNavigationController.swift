@@ -13,7 +13,6 @@ class TabBarNavigationController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        print("VIEW DID LOAD")
         // Do any additional setup after loading the view.
     }
     

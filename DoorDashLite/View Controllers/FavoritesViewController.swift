@@ -1,5 +1,5 @@
 //
-//  SecondViewController.swift
+//  FavoritesViewController.swift
 //  DoorDashLite
 //
 //  Created by Wahid on 10/3/18.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SecondViewController: UIViewController {
+class FavoritesViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
