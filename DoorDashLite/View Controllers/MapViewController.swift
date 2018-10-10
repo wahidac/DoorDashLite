@@ -38,17 +38,7 @@ class MapViewController: UIViewController {
     
     @IBAction func confirmAddressTapped(_ sender: Any) {
         delegate?.locationSelected(location: mapView.centerCoordinate)
-    }
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
+    }    
 }
 
 // Pin looks like ass how can we customize? look into viewForAnnotation and returning MKPinAnnotationView

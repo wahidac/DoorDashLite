@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		3E84C8BC216697DA00C79A46 /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E84C8BB216697DA00C79A46 /* Restaurant.swift */; };
+		3EE4F08E2166ED42000D2E04 /* RestaurantDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE4F08D2166ED42000D2E04 /* RestaurantDataSource.swift */; };
+		3EE4F0912166F44A000D2E04 /* RestaurantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE4F0902166F44A000D2E04 /* RestaurantTableViewCell.swift */; };
+		3EE4F0932166FD2E000D2E04 /* RestaurantDataSourceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE4F0922166FD2E000D2E04 /* RestaurantDataSourceDelegate.swift */; };
 		3EEDCB352165524F00FA96C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EEDCB342165524F00FA96C8 /* AppDelegate.swift */; };
 		3EEDCB392165524F00FA96C8 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EEDCB382165524F00FA96C8 /* FavoritesViewController.swift */; };
 		3EEDCB3C2165524F00FA96C8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EEDCB3A2165524F00FA96C8 /* Main.storyboard */; };
@@ -41,6 +44,9 @@
 
 /* Begin PBXFileReference section */
 		3E84C8BB216697DA00C79A46 /* Restaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
+		3EE4F08D2166ED42000D2E04 /* RestaurantDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantDataSource.swift; sourceTree = "<group>"; };
+		3EE4F0902166F44A000D2E04 /* RestaurantTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantTableViewCell.swift; sourceTree = "<group>"; };
+		3EE4F0922166FD2E000D2E04 /* RestaurantDataSourceDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantDataSourceDelegate.swift; sourceTree = "<group>"; };
 		3EEDCB312165524F00FA96C8 /* DoorDashLite.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoorDashLite.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3EEDCB342165524F00FA96C8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3EEDCB382165524F00FA96C8 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
@@ -94,6 +100,22 @@
 			path = API;
 			sourceTree = "<group>";
 		};
+		3EE4F08C2166ECC6000D2E04 /* Data Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				3EE4F08D2166ED42000D2E04 /* RestaurantDataSource.swift */,
+			);
+			path = "Data Controllers";
+			sourceTree = "<group>";
+		};
+		3EE4F08F2166F413000D2E04 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3EE4F0902166F44A000D2E04 /* RestaurantTableViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		3EEDCB282165524E00FA96C8 = {
 			isa = PBXGroup;
 			children = (
@@ -117,6 +139,8 @@
 		3EEDCB332165524F00FA96C8 /* DoorDashLite */ = {
 			isa = PBXGroup;
 			children = (
+				3EE4F08F2166F413000D2E04 /* Views */,
+				3EE4F08C2166ECC6000D2E04 /* Data Controllers */,
 				3E84C8BA2166915200C79A46 /* API */,
 				3EEDCB7A2165DF7200FA96C8 /* Models */,
 				3EEDCB752165DC4200FA96C8 /* Protocols */,
@@ -163,6 +187,7 @@
 			isa = PBXGroup;
 			children = (
 				3EEDCB762165DD5B00FA96C8 /* MapViewControllerDelegate.swift */,
+				3EE4F0922166FD2E000D2E04 /* RestaurantDataSourceDelegate.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -306,12 +331,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3EE4F0912166F44A000D2E04 /* RestaurantTableViewCell.swift in Sources */,
 				3EEDCB742165925C00FA96C8 /* ExploreViewController.swift in Sources */,
 				3EEDCB392165524F00FA96C8 /* FavoritesViewController.swift in Sources */,
 				3EEDCB792165DEF800FA96C8 /* DoorDashAPIController.swift in Sources */,
 				3EEDCB772165DD5B00FA96C8 /* MapViewControllerDelegate.swift in Sources */,
 				3E84C8BC216697DA00C79A46 /* Restaurant.swift in Sources */,
+				3EE4F0932166FD2E000D2E04 /* RestaurantDataSourceDelegate.swift in Sources */,
 				3EEDCB352165524F00FA96C8 /* AppDelegate.swift in Sources */,
+				3EE4F08E2166ED42000D2E04 /* RestaurantDataSource.swift in Sources */,
 				3EEDCB6F21658E0500FA96C8 /* MapViewController.swift in Sources */,
 				3EEDCB68216553A000FA96C8 /* TabBarNavigationController.swift in Sources */,
 			);

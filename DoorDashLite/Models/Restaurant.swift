@@ -11,12 +11,12 @@ import Foundation
 // TODO: Test this by initializing it with good + bad json
 // Test1: the Dollar formatting logic, pass in various and make sure it works
 struct Restaurant {
-    let id: Int
+    var id: Int
     let name: String
     let description: String
     let delivery_fee: String
     let cover_img_url: URL
-    let asap_time: Int
+    let asap_time: String
     
     init?(jsonObject: [String: Any]) {
         // Required parameters
@@ -41,6 +41,6 @@ struct Restaurant {
         
         deliveryFeeDescription += dollarString + "." + centString
         self.delivery_fee = deliveryFeeDescription
-        self.asap_time = asap_time
+        self.asap_time = String(asap_time)
     }
 }
