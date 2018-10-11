@@ -9,15 +9,25 @@
 import Foundation
 import UIKit
 
+// This sort of represents how we might use something like an NSFetchedResultsController in production.
+// It handles the model layer and communicates changes to the model to our table view controller
 class RestaurantDataSource: NSObject, UITableViewDataSource {
     var delegate: RestaurantDataSourceDelegate?
     
     var restaurants: [Restaurant]? {
         didSet {
-            delegate?.restaurantsUpdated()
+            DispatchQueue.main.async { [weak self] in
+                self?.delegate?.restaurantsUpdated()
+            }
             for restaurant in restaurants! {
-                DoorDashAPIController.downloadImage(url: restaurant.cover_img_url) { [weak self] in
-                    self?.restaurantIcons[restaurant.id] = $0
+                DoorDashAPIController.downloadImage(url: restaurant.cover_img_url) { [weak self] (image: UIImage?) in
+                    if let row = self?.restaurants?.firstIndex(where: { $0.id == restaurant.id }), let image = image {
+                        // Cache the image and then notify the delegate
+                        DispatchQueue.main.async { [weak self] in
+                            self?.restaurantIcons[restaurant.id] = image
+                            self?.delegate?.restaurantUpdated(restaurant: restaurant, indexPath: IndexPath(row: row, section: 0))
+                        }
+                    }
                 }
             }
         }
@@ -34,8 +44,8 @@ class RestaurantDataSource: NSObject, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-       // let row = indexPath.row
-       // return restaurants[row]
+        // let row = indexPath.row
+        // return restaurants[row]
         guard let restaurants = self.restaurants else {
             print("Failed to find data source, could not configure cell")
             return UITableViewCell()
@@ -50,12 +60,12 @@ class RestaurantDataSource: NSObject, UITableViewDataSource {
         cell.restaurantDescription.text = restaurant.description
         cell.costOfDelivery.text = restaurant.delivery_fee
         cell.timeToDeliver.text = restaurant.asap_time
-
+        
         if let cachedImage = restaurantIcons[restaurant.id] {
             cell.icon.image = cachedImage
             cellsThatNeedIcons[restaurant.id] = nil
         }
-
+        
         return cell
     }
 }

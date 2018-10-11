@@ -47,13 +47,16 @@ class ExploreViewController: UIViewController {
 }
 
 extension ExploreViewController : RestaurantDataSourceDelegate {
+    func restaurantUpdated(restaurant: Restaurant, indexPath: IndexPath) {
+        if let visibleRows = tableView.indexPathsForVisibleRows, visibleRows.contains(indexPath) {
+            tableView.reloadRows(at: [indexPath], with: .automatic)
+        }
+    }
+    
     func restaurantsUpdated() {
         // Reload the data
         print("Model updated, reload the table view")
-
-        DispatchQueue.main.async { [weak self] in
-            self?.tableView.reloadData()
-        }
+        tableView.reloadData()
     }
 }
 

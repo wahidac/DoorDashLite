@@ -10,4 +10,5 @@ import Foundation
 
 protocol RestaurantDataSourceDelegate {
     func restaurantsUpdated()
+    func restaurantUpdated(restaurant: Restaurant, indexPath: IndexPath)
 }
