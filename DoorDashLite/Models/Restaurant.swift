@@ -7,9 +7,8 @@
 //
 
 import Foundation
+import UIKit
 
-// TODO: Test this by initializing it with good + bad json
-// Test1: the Dollar formatting logic, pass in various and make sure it works
 struct Restaurant {
     var id: Int
     let name: String
@@ -17,6 +16,7 @@ struct Restaurant {
     let delivery_fee: Int
     let cover_img_url: URL
     let asap_time: Int
+    var coverIcon: UIImage?
     
     init?(jsonObject: [String: Any]) {
         // Required parameters
@@ -37,5 +37,6 @@ struct Restaurant {
         self.delivery_fee = delivery_fee
         self.cover_img_url = cover_img_url
         self.asap_time = asap_time
+        self.coverIcon = nil
     }
 }

@@ -11,7 +11,7 @@ import CoreLocation
 
 class ExploreViewController: UIViewController {
     var mapViewController: MapViewController!
-    var restaurantDataSource: RestaurantDataSource?
+    var restaurantDataSource: RestaurantDataController?
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
@@ -21,9 +21,8 @@ class ExploreViewController: UIViewController {
         mapViewController = storyboard!.instantiateViewController(withIdentifier: "MapViewController") as! MapViewController
         //mapViewController.delegate = self
 
-        restaurantDataSource = RestaurantDataSource()
-        restaurantDataSource?.delegate = self
-        tableView.dataSource = self.restaurantDataSource
+
+        tableView.dataSource = self
     }
     
     // TODO: Dont do. on appear we should check if we have shit stored, no? then do this, else, dont.
@@ -33,34 +32,55 @@ class ExploreViewController: UIViewController {
 //        mapViewController.modalTransitionStyle = .coverVertical
 //        present(mapViewController, animated: false, completion: nil)
         let initialLocation = CLLocation(latitude: 37.773972, longitude: -122.431297)
-        DoorDashAPIController.requestRestaurants(coordinate: initialLocation.coordinate, cache: restaurantDataSource) { [] (restaurants: [Restaurant]?) in
-            let numRestaurants = restaurants?.count ?? 0
-            print("API Request returned us \(numRestaurants) restaurants")
-        }
+        restaurantDataSource = RestaurantDataController(coordinate: initialLocation.coordinate)
+        restaurantDataSource?.delegate = self
+        restaurantDataSource?.fetchRestaurants(callback: { _ in
+            DispatchQueue.main.async { [weak self] in
+                self?.tableView.reloadData()
+            }
+        })
     }
     
     func locationSelected(location: CLLocationCoordinate2D) {
         mapViewController.dismiss(animated: true, completion: nil)
         // Start the API Call
-        
     }
 }
 
-extension ExploreViewController : RestaurantDataSourceDelegate {
-    func restaurantUpdated(restaurant: Restaurant, indexPath: IndexPath) {
-        if let visibleRows = tableView.indexPathsForVisibleRows, visibleRows.contains(indexPath) {
-            tableView.reloadRows(at: [indexPath], with: .automatic)
+extension ExploreViewController: RestaurantDataSourceDelegate {
+    func restaurantUpdated(changeSet: Set<IndexPath>) {
+        DispatchQueue.main.async { [weak self] in
+            guard let visibleIndexPaths = self?.tableView.indexPathsForVisibleRows else {
+                return
+            }
+            let visibleSet = Set(visibleIndexPaths)
+            let visibleInChangeSet = changeSet.intersection(visibleSet)
+            
+            self?.tableView.reloadRows(at: Array(visibleInChangeSet), with: .none)
         }
     }
-    
-    func restaurantsUpdated() {
-        // Reload the data
-        print("Model updated, reload the table view")
-        tableView.reloadData()
-    }
 }
 
-//
-//extension ExploreViewController : MapViewControllerDelegate {
-//
-//}
+extension ExploreViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return restaurantDataSource?.restaurants.count ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "RestaurantTableViewCell", for: indexPath)
+            as! RestaurantTableViewCell
+        guard let restaurant = restaurantDataSource?.restaurants[indexPath.row] else {
+            print("Failed to find restaurant! Configuring an empty cell")
+            return cell
+        }
+        
+        // Configure the cell
+        cell.name.text = restaurant.name
+        cell.restaurantDescription.text = restaurant.description
+        cell.costOfDelivery.text = restaurant.costOfDelivery
+        cell.timeToDeliver.text = restaurant.timeToDeliver
+        cell.icon.image = restaurant.coverIcon
+
+        return cell
+    }
+}

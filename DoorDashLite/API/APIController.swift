@@ -1,5 +1,5 @@
 //
-//  DoorDashAPIController.swift
+//  APIController.swift
 //  DoorDashLite
 //
 //  Created by Wahid on 10/3/18.
@@ -10,12 +10,10 @@ import Foundation
 import UIKit
 import CoreLocation
 
-class DoorDashAPIController {
-    
+class APIController {
     static let baseURL = URL(string: "https://api.doordash.com")!
     
-    // When the API call succeeds, store it in the cache
-    static func requestRestaurants(coordinate: CLLocationCoordinate2D, cache: RestaurantDataSource?, callback: (([Restaurant]?) -> Void)?) {
+    static func requestRestaurants(coordinate: CLLocationCoordinate2D, callback: @escaping (([Restaurant]) -> Void)) {
         let restaurantPath = "v1/store_search/"
         let url = baseURL.appendingPathComponent(restaurantPath)
         
@@ -27,18 +25,14 @@ class DoorDashAPIController {
         print("Downloading the Restaurant Data at the selected location!")
         let task = URLSession.shared.dataTask(with: urlComponents.url!) {(data, response, error ) in
             // De-serialize the response
-            var restaurants: [Restaurant]? = nil
+            var restaurants: [Restaurant] = []
             if let returnedData = data, let jsonResponse = (try? JSONSerialization.jsonObject(with: returnedData, options: [])) as? [[String: Any]]  {
                 restaurants = jsonResponse.compactMap(Restaurant.init)
-                // Simple in memory cache, in production this would end up going to something like Core Data
-                cache?.restaurants = restaurants
             } else {
                 print("Error de-serializing the API response!")
             }
             
-            if let callback = callback {
-                callback(restaurants)
-            }
+            callback(restaurants)
         }
         
         task.resume()
@@ -49,6 +43,7 @@ class DoorDashAPIController {
         let task = URLSession.shared.dataTask(with: url) {(data, response, error ) in
             var downloadedImage: UIImage?
             if let returnedData = data, let image = UIImage(data: returnedData) {
+                print("Downloaded the Image from URL: \(url)")
                 downloadedImage = image
             } else {
                 print("Error downloading an image!")
@@ -58,8 +53,5 @@ class DoorDashAPIController {
         }
         
         task.resume()
-        
-        
     }
-    
 }

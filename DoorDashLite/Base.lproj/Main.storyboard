@@ -109,7 +109,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Explore" image="first" selectedImage="tab-explore" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="Explore" image="tab-explore" selectedImage="tab-explore" id="acW-dT-cKf"/>
                     <connections>
                         <outlet property="tableView" destination="4za-aO-Cpq" id="xZe-vZ-5D1"/>
                     </connections>
@@ -207,7 +207,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="O1u-W8-tvY"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Favorites" image="second" selectedImage="tab-star" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="Favorites" image="tab-star" selectedImage="tab-star" id="cPa-gy-q4n"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
@@ -233,8 +233,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="first" width="30" height="30"/>
-        <image name="second" width="30" height="30"/>
         <image name="tab-explore" width="28" height="24"/>
         <image name="tab-star" width="28" height="24"/>
     </resources>
