@@ -58,8 +58,8 @@ class RestaurantDataSource: NSObject, UITableViewDataSource {
         // Configure the cell
         cell.name.text = restaurant.name
         cell.restaurantDescription.text = restaurant.description
-        cell.costOfDelivery.text = restaurant.delivery_fee
-        cell.timeToDeliver.text = restaurant.asap_time
+        cell.costOfDelivery.text = restaurant.costOfDelivery
+        cell.timeToDeliver.text = restaurant.timeToDeliver
         
         if let cachedImage = restaurantIcons[restaurant.id] {
             cell.icon.image = cachedImage

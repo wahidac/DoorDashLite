@@ -14,4 +14,14 @@ class RestaurantTableViewCell: UITableViewCell {
     @IBOutlet weak var costOfDelivery: UILabel!
     @IBOutlet weak var timeToDeliver: UILabel!
     @IBOutlet weak var icon: UIImageView!
+    
+    let iconCornerRadius: CGFloat = 5.0
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        // Round out the image view and surround it w/ a border
+        icon.layer.cornerRadius = iconCornerRadius
+        icon.layer.masksToBounds = true
+    }
 }
