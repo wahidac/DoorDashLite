@@ -35,6 +35,7 @@ class MapViewController: UIViewController {
     }
     
     @IBAction func confirmAddressTapped(_ sender: Any) {
+        print("User selected location at coordinate: \(currentPosition.coordinate)")
         delegate?.locationSelected(location: currentPosition.coordinate)
     }
     

@@ -22,7 +22,7 @@ class APIController {
         let longQueryParam = URLQueryItem(name: "lng", value: String(coordinate.longitude))
         urlComponents.queryItems = [latQueryParam, longQueryParam]
         
-        print("Downloading the Restaurant Data at the selected location!")
+        print("Downloading the Restaurant Data for the coordinate: \(coordinate)!")
         let task = URLSession.shared.dataTask(with: urlComponents.url!) {(data, response, error ) in
             // De-serialize the response
             var restaurants: [Restaurant] = []
