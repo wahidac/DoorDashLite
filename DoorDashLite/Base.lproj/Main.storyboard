@@ -132,32 +132,37 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="1yT-qk-8CL">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="1yT-qk-8CL">
                                 <rect key="frame" x="0.0" y="64" width="414" height="672"/>
                                 <subviews>
                                     <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="YYe-u2-6TR">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="620.33333333333337"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="463"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="463" id="bSa-mc-Obt"/>
                                             <constraint firstAttribute="width" constant="414" id="oiX-i5-SvL"/>
                                         </constraints>
                                     </mapView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="An address" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8mb-8W-l8E">
-                                        <rect key="frame" x="0.0" y="620.33333333333337" width="414" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="0.62347543239593506" green="0.62356525659561157" blue="0.62344712018966675" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bTO-WR-6h5">
-                                        <rect key="frame" x="0.0" y="641.33333333333337" width="414" height="30.666666666666629"/>
-                                        <color key="backgroundColor" red="0.88453775644302368" green="0.089431799948215485" blue="0.22128519415855408" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" title="Confirm Address">
-                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="confirmAddressTapped:" destination="t0u-l1-3xn" eventType="touchUpInside" id="uah-HL-Npl"/>
-                                        </connections>
-                                    </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="sPT-v3-mkj">
+                                        <rect key="frame" x="0.0" y="463" width="414" height="209"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="An address" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8mb-8W-l8E">
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="104.66666666666667"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="0.62347543239593506" green="0.62356525659561157" blue="0.62344712018966675" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bTO-WR-6h5">
+                                                <rect key="frame" x="0.0" y="104.66666666666663" width="414" height="104.33333333333331"/>
+                                                <color key="backgroundColor" red="0.88453775644302368" green="0.089431799948215485" blue="0.22128519415855408" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" title="Confirm Address">
+                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="confirmAddressTapped:" destination="t0u-l1-3xn" eventType="touchUpInside" id="uah-HL-Npl"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
                             </stackView>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FDG-Ge-kYP">
