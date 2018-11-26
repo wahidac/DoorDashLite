@@ -13,37 +13,43 @@ class ExploreViewController: UIViewController {
     var mapViewController: MapViewController!
     var restaurantDataSource: RestaurantDataController?
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Initialize with the map view controller so we can pick an address
-        mapViewController = storyboard!.instantiateViewController(withIdentifier: "MapViewController") as! MapViewController
-        //mapViewController.delegate = self
-
-
+        mapViewController = storyboard!.instantiateViewController(withIdentifier: "MapViewController") as? MapViewController
+        mapViewController.delegate = self
         tableView.dataSource = self
     }
     
-    // TODO: Dont do. on appear we should check if we have shit stored, no? then do this, else, dont.
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-//        mapViewController.modalPresentationStyle = .fullScreen
-//        mapViewController.modalTransitionStyle = .coverVertical
-//        present(mapViewController, animated: false, completion: nil)
-        let initialLocation = CLLocation(latitude: 37.773972, longitude: -122.431297)
-        restaurantDataSource = RestaurantDataController(coordinate: initialLocation.coordinate)
+        
+        if restaurantDataSource == nil {
+            mapViewController.modalPresentationStyle = .fullScreen
+            mapViewController.modalTransitionStyle = .coverVertical
+            present(mapViewController, animated: false, completion: nil)
+        }
+    }
+}
+
+extension ExploreViewController: MapViewControllerDelegate {
+    func locationSelected(location: CLLocationCoordinate2D) {
+        mapViewController.dismiss(animated: true, completion: nil)
+        activityIndicator.startAnimating()
+
+        // Fetch the restaurants
+        restaurantDataSource = RestaurantDataController(coordinate: location)
         restaurantDataSource?.delegate = self
         restaurantDataSource?.fetchRestaurants(callback: { _ in
             DispatchQueue.main.async { [weak self] in
+                self?.activityIndicator.stopAnimating()
+                self?.activityIndicator.isHidden = true
                 self?.tableView.reloadData()
             }
         })
-    }
-    
-    func locationSelected(location: CLLocationCoordinate2D) {
-        mapViewController.dismiss(animated: true, completion: nil)
-        // Start the API Call
     }
 }
 

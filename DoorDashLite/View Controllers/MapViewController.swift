@@ -13,6 +13,7 @@ import CoreLocation
 class MapViewController: UIViewController {
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var currentAddress: UILabel!
+    
     private var currentPosition: MKPointAnnotation!
     var delegate: MapViewControllerDelegate?
     

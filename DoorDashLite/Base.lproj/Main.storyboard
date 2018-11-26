@@ -99,11 +99,16 @@
                                     <outlet property="delegate" destination="9pv-A4-QxB" id="9fT-Ri-hWb"/>
                                 </connections>
                             </tableView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="pX3-3T-CuH">
+                                <rect key="frame" x="197" y="358" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="4za-aO-Cpq" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" id="EpF-Qx-Gpn"/>
+                            <constraint firstItem="pX3-3T-CuH" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="Mmw-dV-Rey"/>
                             <constraint firstItem="PQr-Ze-W5v" firstAttribute="trailing" secondItem="4za-aO-Cpq" secondAttribute="trailing" id="eMt-zS-BBg"/>
+                            <constraint firstItem="pX3-3T-CuH" firstAttribute="centerY" secondItem="tsR-hK-woN" secondAttribute="centerY" id="oj1-ZL-3JF"/>
                             <constraint firstItem="4za-aO-Cpq" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" id="tLY-OL-ffm"/>
                             <constraint firstItem="PQr-Ze-W5v" firstAttribute="bottom" secondItem="4za-aO-Cpq" secondAttribute="bottom" id="uRq-TL-cMj"/>
                         </constraints>
@@ -111,6 +116,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Explore" image="tab-explore" selectedImage="tab-explore" id="acW-dT-cKf"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="pX3-3T-CuH" id="9j2-1c-pMH"/>
                         <outlet property="tableView" destination="4za-aO-Cpq" id="xZe-vZ-5D1"/>
                     </connections>
                 </viewController>
@@ -126,45 +132,52 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="YYe-u2-6TR">
-                                <rect key="frame" x="0.0" y="64" width="375" height="463"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </mapView>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FDG-Ge-kYP">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="1yT-qk-8CL">
+                                <rect key="frame" x="0.0" y="64" width="414" height="672"/>
+                                <subviews>
+                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="YYe-u2-6TR">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="620.33333333333337"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="463" id="bSa-mc-Obt"/>
+                                            <constraint firstAttribute="width" constant="414" id="oiX-i5-SvL"/>
+                                        </constraints>
+                                    </mapView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="An address" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8mb-8W-l8E">
+                                        <rect key="frame" x="0.0" y="620.33333333333337" width="414" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.62347543239593506" green="0.62356525659561157" blue="0.62344712018966675" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bTO-WR-6h5">
+                                        <rect key="frame" x="0.0" y="641.33333333333337" width="414" height="30.666666666666629"/>
+                                        <color key="backgroundColor" red="0.88453775644302368" green="0.089431799948215485" blue="0.22128519415855408" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="Confirm Address">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="confirmAddressTapped:" destination="t0u-l1-3xn" eventType="touchUpInside" id="uah-HL-Npl"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FDG-Ge-kYP">
                                 <rect key="frame" x="0.0" y="20" width="414" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
                                     <navigationItem title="Choose an Address" id="2Vs-kK-JHe"/>
                                 </items>
                             </navigationBar>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bTO-WR-6h5">
-                                <rect key="frame" x="0.0" y="597" width="375" height="70"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.88453775644302368" green="0.089431799948215485" blue="0.22128519415855408" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Confirm Address">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="confirmAddressTapped:" destination="t0u-l1-3xn" eventType="touchUpInside" id="uah-HL-Npl"/>
-                                </connections>
-                            </button>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YyT-vU-15t">
-                                <rect key="frame" x="0.0" y="527" width="375" height="70"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="An address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8mb-8W-l8E">
-                                        <rect key="frame" x="144" y="25" width="87" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="0.62347543239593506" green="0.62356525659561157" blue="0.62344712018966675" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="FDG-Ge-kYP" firstAttribute="trailing" secondItem="AAN-nX-kJH" secondAttribute="trailing" id="2pe-hm-ivC"/>
+                            <constraint firstItem="1yT-qk-8CL" firstAttribute="top" secondItem="FDG-Ge-kYP" secondAttribute="bottom" id="6R8-f9-VUN"/>
+                            <constraint firstItem="FDG-Ge-kYP" firstAttribute="top" secondItem="AAN-nX-kJH" secondAttribute="top" id="SLD-jB-0nv"/>
+                            <constraint firstItem="AAN-nX-kJH" firstAttribute="trailing" secondItem="1yT-qk-8CL" secondAttribute="trailing" id="Zjq-Ir-sie"/>
+                            <constraint firstItem="FDG-Ge-kYP" firstAttribute="leading" secondItem="AAN-nX-kJH" secondAttribute="leading" id="k1u-Xw-cbt"/>
+                            <constraint firstItem="AAN-nX-kJH" firstAttribute="bottom" secondItem="1yT-qk-8CL" secondAttribute="bottom" id="qDv-Au-fo6"/>
+                            <constraint firstItem="1yT-qk-8CL" firstAttribute="leading" secondItem="AAN-nX-kJH" secondAttribute="leading" id="sLc-1P-Wd8"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="AAN-nX-kJH"/>
                     </view>
                     <connections>
@@ -174,7 +187,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rBt-NV-tWR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1701.5999999999999" y="-321.58920539730138"/>
+            <point key="canvasLocation" x="1701.449275362319" y="-322.01086956521743"/>
         </scene>
         <!--Favorites-->
         <scene sceneID="wg7-f3-ORb">
