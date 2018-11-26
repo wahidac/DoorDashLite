@@ -30,35 +30,41 @@ class MapViewController: UIViewController {
         currentPosition = MKPointAnnotation()
         currentPosition.coordinate = mapView.centerCoordinate
         mapView.addAnnotation(currentPosition)
+        
+        updateCurrentAddress()
     }
     
     @IBAction func confirmAddressTapped(_ sender: Any) {
-        delegate?.locationSelected(location: mapView.centerCoordinate)
-    }    
+        delegate?.locationSelected(location: currentPosition.coordinate)
+    }
+    
+    private func updateCurrentAddress() {
+        // Figure out the address of the current location and update the current address
+        let geocoder = CLGeocoder()
+        let location = CLLocation(latitude: currentPosition.coordinate.latitude, longitude: currentPosition.coordinate.longitude)
+        geocoder.reverseGeocodeLocation(location) { [weak self] (placeMarks: [CLPlacemark]?, error: Error?) in
+            guard let first = placeMarks?.first, let address = first.name, let currentPosition = self?.currentPosition else {
+                print("Failed to reverse locate the address")
+                return
+            }
+            
+            // Update the text field
+            if location.coordinate.latitude == currentPosition.coordinate.latitude,
+                location.coordinate.longitude == currentPosition.coordinate.longitude {
+                self?.currentAddress.text = address
+            }
+        }
+    }
 }
 
 extension MapViewController: MKMapViewDelegate {
     func mapViewDidChangeVisibleRegion(_ mapView: MKMapView) {
         // Update the current position
         currentPosition.coordinate = mapView.centerCoordinate
+        currentAddress.text = "..."
     }
     
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
-        // Figure out the address of the current location and update the current address
-        let geocoder = CLGeocoder()
-        let location = CLLocation(latitude: currentPosition.coordinate.latitude, longitude: currentPosition.coordinate.longitude)
-        geocoder.reverseGeocodeLocation(location) { [weak self] (placeMarks: [CLPlacemark]?, error: Error?) in
-            guard let first = placeMarks?.first, let address = first.name else {
-                // ERROR
-                return
-            }
-            
-            // Update the text field
-            self?.currentAddress.text = address
-            //print(address)
-        }
-        print("DID CHANGE")
+        updateCurrentAddress()
     }
-    
 }
-

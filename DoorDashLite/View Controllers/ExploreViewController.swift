@@ -33,16 +33,23 @@ class ExploreViewController: UIViewController {
             present(mapViewController, animated: false, completion: nil)
         }
     }
+    
+    @IBAction func mapItemTapped(_ sender: Any) {
+        present(mapViewController, animated: false, completion: nil)
+    }
 }
 
 extension ExploreViewController: MapViewControllerDelegate {
     func locationSelected(location: CLLocationCoordinate2D) {
         mapViewController.dismiss(animated: true, completion: nil)
         activityIndicator.startAnimating()
+        activityIndicator.isHidden = false
 
         // Fetch the restaurants
         restaurantDataSource = RestaurantDataController(coordinate: location)
         restaurantDataSource?.delegate = self
+        tableView.reloadData()
+        
         restaurantDataSource?.fetchRestaurants(callback: { _ in
             DispatchQueue.main.async { [weak self] in
                 self?.activityIndicator.stopAnimating()
